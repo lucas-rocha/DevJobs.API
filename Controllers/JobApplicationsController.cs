@@ -1,4 +1,5 @@
 ﻿using DevJobs.API.Models;
+using DevJobs.API.Persistence;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DevJobs.API.Controllers
@@ -10,7 +11,7 @@ namespace DevJobs.API.Controllers
         [HttpPost]
         public IActionResult Post(int id, AddJobApplicationInputModel model)
         {
-            return Ok();
+            return NoContent();
         }
     }
 }
