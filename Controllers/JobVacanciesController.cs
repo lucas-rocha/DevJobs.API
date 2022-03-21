@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DevJobs.API.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DevJobs.API.Controllers
 {
@@ -19,13 +20,13 @@ namespace DevJobs.API.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post()
+        public IActionResult Post(AddJobVacancyInputModel model)
         {
             return Ok();
         }
 
         [HttpPut("{id}")]
-        public IActionResult Put()
+        public IActionResult Put(UpdateJobVacancyInputModel model)
         {
             return NoContent();
         }
