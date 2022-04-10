@@ -1,4 +1,5 @@
 using DevJobs.API.Persistence;
+using DevJobs.API.Persistence.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -31,6 +32,8 @@ namespace DevJobs.API
 
             services.AddDbContext<DevJobsContext>(options => 
                 options.UseSqlServer(connectionString));
+
+            services.AddScoped<IJobVacancyRepository, JobVacancyRepository>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
