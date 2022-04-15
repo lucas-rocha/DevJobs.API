@@ -18,6 +18,10 @@ namespace DevJobs.API.Controllers
             _repository = repository;
         }
 
+        /// <summary>
+        /// Get all job vacancies
+        /// </summary>
+        /// <returns>A list of all job vancancies</returns>
         [HttpGet]
         public IActionResult GetAll()
         {
@@ -25,6 +29,11 @@ namespace DevJobs.API.Controllers
             return Ok(jobVacancies);
         }
 
+        /// <summary>
+        /// Get a job vacancy by id.
+        /// </summary>
+        /// <param name="id">Job vacancy id.</param>
+        /// <returns>The specified object of job vacancy</returns>
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
@@ -36,6 +45,21 @@ namespace DevJobs.API.Controllers
             return Ok(jobVacancy);
         }
 
+        /// <summary>
+        /// Register job vacancy.
+        /// </summary>
+        /// <remarks>
+        /// {
+        ///     "title": "string",
+        ///     "description": "string",
+        ///     "company": "string",
+        ///     "isRemote": true,
+        ///     "salaryRange": "string"
+        ///  }
+        /// </remarks>
+        /// <param name="model">Vacancy data.</param>
+        /// <returns>Created object.</returns>
+        /// <response code="201"></response>
         [HttpPost]
         public IActionResult Post(AddJobVacancyInputModel model)
         {
@@ -52,6 +76,12 @@ namespace DevJobs.API.Controllers
             return CreatedAtAction("GetById", new { id = jobVacancy.Id }, jobVacancy );
         }
 
+        /// <summary>
+        /// Update job vacancy.
+        /// </summary>
+        /// <param name="id">Job vacancy id.</param>
+        /// <param name="model"></param>
+        /// <returns>No content.</returns>
         [HttpPut("{id}")]
         public IActionResult Put(int id, UpdateJobVacancyInputModel model)
         {

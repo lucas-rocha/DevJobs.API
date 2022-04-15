@@ -11,6 +11,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -38,7 +39,22 @@ namespace DevJobs.API
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "DevJobs.API", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { 
+                    Version = "v1",
+                    Title = "DevJobs.API",
+                    Description =  "An ASP.NET Core Web API for job applications",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Lucas Rocha",
+                        Email = "lucasrocha.dv@gmail.com",
+                    }
+                });
+
+                var xmlFile = "DevJobs.API.xml";
+
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+
+                c.IncludeXmlComments(xmlPath);
             });
         }
 

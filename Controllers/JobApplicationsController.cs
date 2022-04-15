@@ -18,6 +18,12 @@ namespace DevJobs.API.Controllers
             _repository = repository;
         }
 
+        /// <summary>
+        /// Create a job application to a job vacancy.
+        /// </summary>
+        /// <param name="id">Job vacancy ID.</param>
+        /// <param name="model"></param>
+        /// <returns>No Content</returns>
         [HttpPost]
         public IActionResult Post(int id, AddJobApplicationInputModel model)
         {
